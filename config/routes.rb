@@ -13,7 +13,8 @@ devise_for :customers,skip: [:passwords], controllers: {
   }
 
 root to: 'public/homes#top'
-get 'about' => 'public/homes#about'
+
+get "/about" => "public/homes#about"
 
 
 namespace :customers do
