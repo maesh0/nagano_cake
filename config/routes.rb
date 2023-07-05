@@ -20,10 +20,22 @@ get "/items" => "public/items#index"
 
 get "/items/:id" => "public/items#show"
 
-get "customers/my_page" => "public/customers#show"
 
+#public
+#get "customers/my_page" => "public/customers#show"
 
-namespace :customers do
+#get "customers/information/edit" => "public/customers#edit"
+
+#patch "customers/information" => "public/customers#update"
+#public
+
+scope module: :public do
+  
+  get "customers/my_page" => "public/customers#show"
+  
+  get "customers/information/edit" => "public/customers#edit"
+  
+  patch "customers/information" => "public/customers#update"
 
 end
 
