@@ -1,17 +1,29 @@
 class Public::CustomersController < ApplicationController
 before_action :authenticate_customer!
   def show
-
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    #@customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    #@customer = Customer.find(params[:id])
+    @customer = current_customer
     @customer.update(customer_params)
     redirect_to customers_my_page
+  end
+
+
+  def withdrawal
+    #@customer = Customer.find(current_customer.id)
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
 private
