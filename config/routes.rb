@@ -33,6 +33,8 @@ get "/items/:id" => "public/items#show"
 
 scope module: :public do
 
+  resources :items, only: %i[index show]
+
   get "customers/my_page" => "customers#show"
 
   get "customers/information/edit" => "customers#edit"
@@ -50,8 +52,10 @@ end
 namespace :admin do
 
   root to: 'homes#top'
+
+  resources :items, only: %i[index new create show edit update]
   
-  resources :items, except: [:destroy]
+  resources :customers, only: %i[index show edit update]
 
 end
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

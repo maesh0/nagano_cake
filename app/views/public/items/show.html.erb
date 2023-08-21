@@ -1,1 +1,15 @@
-商品詳細画面
+（詳細画面）
+
+<div>
+
+  <%= image_tag @item.image %>
+
+  <p><%= @item.introduction %></p>
+
+  <p>¥<%= (@item.price * 1.1).to_i %><h6>(税込)</h6></p>
+
+  個数選択
+
+  カートに入れる
+
+</div>

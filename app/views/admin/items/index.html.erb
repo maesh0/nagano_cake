@@ -1,1 +1,39 @@
-<h2>商品一覧<h2
+<h2>商品一覧</h2>
+
+  <%= link_to "", new_admin_item_path %>
+
+  <table>
+
+    <thred>
+
+        <tr>
+
+          <th>商品ID</th>
+
+          <th>商品名</th>
+
+          <th>税抜価格</th>
+
+        </tr>
+
+    </thred>
+
+    <tbody>
+
+      <% @items.each do |item| %>
+
+        <tr>
+
+          <th><%= item.id %></th>
+
+          <th><%= link_to item.name, admin_item_path(item) %></th>
+
+          <th><%= item.price %></th>
+
+        </tr>
+
+      <% end %>
+
+    </tbody>
+
+  </table>
