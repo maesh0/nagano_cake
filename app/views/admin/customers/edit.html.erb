@@ -1,1 +1,55 @@
-会員情報編集
+<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+
+<%= form_with model: @customer, url: admin_customer_path do |f| %>
+
+  <label for="inputId">会員ID</label>
+
+    <%= @customer.id %><br>
+
+  <label for="inputName">氏名</label>
+
+    <%= f.text_field :first_name, autofocus: true %>
+
+    <%= f.text_field :last_name, autofocus: true %><br>
+
+  <label for="inputNameKana">フリガナ</label>
+
+    <%= f.text_field :first_name_kana, autofocus: true %>
+
+    <%= f.text_field :last_name_kana, autofocus: true %><br>
+
+  <label for="inputPost">郵便番号</label>
+
+    <%= f.text_field :postal_code, autofocus: true %><br>
+
+  <label for="inputAddress">住所</label>
+
+    <%= f.text_field :address, autofocus: true %><br>
+
+  <label for="inputTele">電話番号</label>
+
+    <%= f.text_field :telephone_number, autofocus: true %><br>
+
+  <label for="inputEmail">メールアドレス</label>
+
+    <%= f.text_field :email, autofocus: true %><br>
+
+  <label for="inputStates">会員ステータス</label>
+
+    <% if @customer.is_deleted == nil %>
+
+      <label><%= f.radio_button :is_deleted, {value: ""}, {checked: true} %>退会</label>
+
+      <label><%= f.radio_button :is_deleted, value:Time.now %>有効</label>
+
+    <% else %>
+
+      <label><%= f.radio_button :is_deleted, value: "" %>退会</label>
+
+      <lavel><%= f.radio_button :is_deleted, {value: Time.now}, {checked: true} %>有効</lavel>
+
+    <% end %><br>
+
+  <%= f.submit "変更を保存" %>
+
+<% end %>

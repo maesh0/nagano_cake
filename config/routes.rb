@@ -47,6 +47,8 @@ scope module: :public do
   #論理削除用のルーティング
   patch "customers/withdrawal/" => "customers#withdrawal"
 
+  
+  
 end
 
 namespace :admin do
